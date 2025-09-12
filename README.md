@@ -1,2 +1,161 @@
-# RedisX
-Spring Boot Starter ที่ออกแบบมาให้ช้งาน Redis  ผ่าน Annotation โดยไม่ต้องเรียกผ่าน API เอง
+# RedisX Starter
+
+RedisX คือ Spring Boot Starter ที่ออกแบบมาให้ **ใช้งาน Redis ครอบคลุมทุกฟีเจอร์** ได้ผ่าน Annotation บนเมธอดโดยตรง  
+เน้น **Annotation-first Programming Model** → นักพัฒนาไม่ต้องเรียก API เอง แต่ใช้แค่แปะ annotation แล้วระบบจัดการให้ครบ
+
+---
+
+## Redis Features & Use Cases
+
+### 1. Cache
+- **คืออะไร:** เก็บข้อมูลชั่วคราวในหน่วยความจำ พร้อม TTL/Expire
+- **ใช้เมื่อไหร่:** ลดภาระ DB, session store, token store
+- **Annotation:** `@CacheableX`, `@MapCachePut`, `@MapCacheGet`
+
+---
+
+### 2. Pub/Sub
+- **คืออะไร:** ส่งข้อความแบบ real-time ผ่าน channel (ไม่คงค้าง)
+- **ใช้เมื่อไหร่:** Broadcast event, invalidate cache, notify หลาย service
+- **Annotation:** `@Publish`
+
+---
+
+### 3. Streams
+- **คืออะไร:** Event log มี Consumer Group, ack, retry, DLQ
+- **ใช้เมื่อไหร่:** Event-driven architecture, durable queue, job processing
+- **Annotation:** `@StreamEmit`
+
+---
+
+### 4. Distributed Lock
+- **คืออะไร:** ป้องกันหลาย instance ทำงานชนกัน
+- **ใช้เมื่อไหร่:** Process order, cron job ที่ต้อง run แค่ตัวเดียว
+- **Annotation:** `@DistributedLock`
+
+---
+
+### 5. Rate Limiter
+- **คืออะไร:** จำกัดจำนวนการเรียก/หน่วยเวลา
+- **ใช้เมื่อไหร่:** API throttle, ป้องกัน abuse
+- **Annotation:** `@RateLimit`
+
+---
+
+### 6. Idempotency
+- **คืออะไร:** ป้องกัน request ซ้ำซ้อน
+- **ใช้เมื่อไหร่:** Payment, checkout, critical transaction
+- **Annotation:** `@Idempotent`
+
+---
+
+### 7. Semaphore / Concurrency Control
+- **คืออะไร:** จำกัดจำนวนงานที่ทำพร้อมกัน
+- **ใช้เมื่อไหร่:** Job ที่กิน resource มาก เช่น report rendering
+- **Annotation:** `@SemaphoreAcquire`
+
+---
+
+### 8. Queue (List / Sorted Set / Redisson)
+- **คืออะไร:** จัดคิวงาน NORMAL / DELAYED / PRIORITY
+- **ใช้เมื่อไหร่:** Async job, scheduled job
+- **Annotation:** `@QueueEnqueue`
+
+---
+
+### 9. Geo
+- **คืออะไร:** เก็บพิกัด ค้นหาจุดในรัศมี
+- **ใช้เมื่อไหร่:** Rider near me, ร้านใกล้ฉัน
+- **Annotation:** `@GeoAdd`, `@GeoNearby`
+
+---
+
+### 10. HyperLogLog
+- **คืออะไร:** นับ unique แบบ memory-efficient (~12KB)
+- **ใช้เมื่อไหร่:** นับ unique visitors, unique IP
+- **Annotation:** `@HllAdd`
+
+---
+
+### 11. Bitmaps
+- **คืออะไร:** Track สถานะ/บิต เช่น login วันไหน
+- **ใช้เมื่อไหร่:** Daily active users, feature seen/unseen
+- **Annotation:** (planned) `@BitmapSet`, `@BitmapGet`
+
+---
+
+### 12. Bloom Filter (RedisBloom)
+- **คืออะไร:** Probabilistic filter “น่าจะเคยเห็นแล้ว”  
+- **ใช้เมื่อไหร่:** กัน duplicate, spam, ป้องกัน query DB ซ้ำ
+- **Annotation:** `@BloomEnsureNew`
+
+---
+
+### 13. RedisJSON (Redis Stack)
+- **คืออะไร:** เก็บ/อัปเดต JSON เป็น document store
+- **ใช้เมื่อไหร่:** Config/document service, query sub-path
+- **Annotation:** (planned) `@JsonSet`, `@JsonGet`
+
+---
+
+### 14. RediSearch (Redis Stack)
+- **คืออะไร:** Full-text search + secondary index
+- **ใช้เมื่อไหร่:** Search ภายใน document, analytics
+- **Annotation:** (planned) `@SearchIndex`, `@SearchQuery`
+
+---
+
+### 15. TimeSeries (RedisTimeSeries)
+- **คืออะไร:** เก็บข้อมูลชุดเวลา (metrics, IoT)
+- **ใช้เมื่อไหร่:** Monitor metrics, IoT sensor data
+- **Annotation:** (planned) `@TimeSeriesAdd`, `@TimeSeriesQuery`
+
+---
+
+## Roadmap: RedisX Starter
+
+### Core (MVP)
+- **Cache**: @CacheableX, @MapCachePut/@MapCacheGet  
+- **Distributed Lock**: @DistributedLock  
+- **Idempotency**: @Idempotent  
+- **Rate Limiter**: @RateLimit  
+- **Semaphore**: @SemaphoreAcquire  
+- **Pub/Sub**: @Publish  
+- **Queue**: @QueueEnqueue (NORMAL/DELAYED/PRIORITY)  
+- **Streams**: @StreamEmit + consumer infra  
+
+### Extended Data Structures
+- **Geo**: @GeoAdd, @GeoNearby  
+- **HyperLogLog**: @HllAdd  
+- **Bitmaps**: @BitmapSet, @BitmapGet  
+- **Bloom Filter**: @BloomEnsureNew  
+
+### Redis Stack Integration
+- **RedisJSON**: @JsonSet, @JsonGet  
+- **RediSearch**: @SearchIndex, @SearchQuery  
+- **TimeSeries**: @TimeSeriesAdd, @TimeSeriesQuery  
+
+---
+
+## แนวคิดหลัก
+- ทุกฟีเจอร์ใช้งานผ่าน **Annotation บนเมธอด** → ไม่ต้องเรียก API เอง  
+- เน้น **Idempotency + Reliability** → กันซ้ำ, retry, DLQ  
+- มี **Actuator metrics/health** ครอบคลุมสำหรับ production  
+
+---
+
+## ตัวอย่างโค้ดสั้น ๆ
+
+```java
+@Service
+public class PaymentService {
+
+  @Idempotent(key=\"'pay:' + #orderId\", ttlSeconds=600)
+  @DistributedLock(key=\"'order:' + #orderId\", leaseMillis=15000)
+  @RateLimit(key=\"'user:' + #userId + ':pay'\", permits=5, intervalSeconds=1)
+  @StreamEmit(stream=\"'stream:payment'\", body=\"T(java.util.Map).of('order',#orderId,'event','PAID')\")
+  public Receipt pay(String orderId, String userId) {
+    // ... ตัดบัตร / update order
+    return new Receipt(orderId, \"PAID\");
+  }
+}
