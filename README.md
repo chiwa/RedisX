@@ -164,7 +164,7 @@ public class PaymentService {
 
 ## Releases 
 
-- [v0.1.0 – Cache Starter](docs/v_0_1_0/v0.1.0-cache.md)
+- [v0.1.0 – Cache Starter](/docs/v_0_1_0/v0.1.0-cache.md)
 - [v0.2.0 – Pub/Sub Starter](docs/v_0_2_0/v0.2.0-pubsub.md) [Future]
 - [v0.3.0 – Streams Starter](docs/v_0_3_0/v0.3.0-streams.md) [Future]
 - [v0.4.0 – Distributed Lock Starter](docs/v_0_4_0/v0.4.0-lock.md) [Future]

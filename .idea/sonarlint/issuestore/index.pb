@@ -34,3 +34,5 @@ S
 Q.idea/sonarlint/securityhotspotstore/8/f/8fbeb5b901fbf532e9a442cd7b2f1bb0b41302e9,9/d/9d82f5f04702d549a432407fd4b07f9946e3f202
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
+7
+test.md,e/1/e192bb1a18afdb8d546a8a7f9d813e97e9e23eea
