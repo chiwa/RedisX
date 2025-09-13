@@ -164,12 +164,12 @@ public class PaymentService {
 
 ## Releases 
 
-- [v0.1.0 – Cache Starter](v_0_1_0/v0.1.0-cache.md)
-- [v0.2.0 – Pub/Sub Starter](v0.2.0-pubsub.md) [Future]
-- [v0.3.0 – Streams Starter](v0.3.0-streams.md) [Future]
-- [v0.4.0 – Distributed Lock Starter](v0.4.0-lock.md) [Future]
-- [v0.5.0 – Rate Limiter Starter](v0.5.0-ratelimit.md) [Future]
-- [v0.6.0 – Idempotency Starter](v0.6.0-idempotent.md) [Future]
-- [v0.7.0 – Semaphore Starter](v0.7.0-semaphore.md) [Future]
-- [v0.8.0 – Queue Starter](v0.8.0-queue.md) [Future]
-- [v0.9.0 – Geo Starter](v0.9.0-geo.md) [Future]
+- [v0.1.0 – Cache Starter](docs/v_0_1_0/v0.1.0-cache.md)
+- [v0.2.0 – Pub/Sub Starter](docs/v_0_2_0/v0.2.0-pubsub.md) [Future]
+- [v0.3.0 – Streams Starter](docs/v_0_3_0/v0.3.0-streams.md) [Future]
+- [v0.4.0 – Distributed Lock Starter](docs/v_0_4_0/v0.4.0-lock.md) [Future]
+- [v0.5.0 – Rate Limiter Starter](docs/v_0_5_0/v0.5.0-ratelimit.md) [Future]
+- [v0.6.0 – Idempotency Starter](docs/v_0_6_0/v0.6.0-idempotent.md) [Future]
+- [v0.7.0 – Semaphore Starter](docs/v_0_7_0/v0.7.0-semaphore.md) [Future]
+- [v0.8.0 – Queue Starter](docs/v_0_8_0/v0.8.0-queue.md) [Future]
+- [v0.9.0 – Geo Starter](docs/v_0_9_0/v0.9.0-geo.md) [Future]
