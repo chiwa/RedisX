@@ -1,0 +1,14 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+redisx:
+  cache:
+    prefix: zeng-cache
+
+logging:
+  level:
+    org.springframework.data.redis: WARN        # เห็นคำสั่ง GET/SET
+    io.lettuce.core: WARN                       # เห็นระดับ client
+    com.zengcode.redisx: DEBUG

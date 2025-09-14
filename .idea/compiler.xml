@@ -6,8 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="redisx-autoconfiguration" />
         <module name="redisx-annotations" />
+        <module name="redisx-client-demo" />
+        <module name="redisx-cache-starter" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="redisx-demo" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="redisx-annotations" options="-parameters" />
+      <module name="redisx-autoconfiguration" options="-parameters" />
+      <module name="redisx-cache-starter" options="-parameters" />
+      <module name="redisx-client-demo" options="-parameters" />
+      <module name="redisx-demo" options="-parameters" />
+    </option>
   </component>
 </project>
