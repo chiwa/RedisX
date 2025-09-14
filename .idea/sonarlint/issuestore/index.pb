@@ -92,3 +92,5 @@ eredisx-cache-starter/src/main/java/com/zengcode/redisx/cache/RedisXCacheStarter
 bredisx-autoconfiguration/src/main/java/com/zengcode/redisx/autoconfiguration/cache/CacheProps.java,e/7/e7b2ccdf0e8abc7e21e58270a0f8105937f7b234
 «
 {redisx-autoconfiguration/src/main/java/com/zengcode/redisx/autoconfiguration/cache/RedisXCacheStarterAutoConfiguration.java,7/7/77d0eb18df0deb08c11133cac0bbe060c990a4e9
+‹
+[redisx-cache-starter/src/test/java/com/zengcode/redisx/cache/CacheableXIntegrationTest.java,6/a/6aa6875d70dca2b60f7ac6be18e1290814007b80

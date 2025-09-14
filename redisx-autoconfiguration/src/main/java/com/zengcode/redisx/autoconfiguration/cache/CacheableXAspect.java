@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Aspect สำหรับ @CacheableX
- * ลอจิกหลัก:
  * 1) ตรวจว่าเปิดระบบ cache อยู่ไหม + ตรวจ condition (ถ้ามี)
  * 2) สร้าง key
  * 3) ลองอ่านจาก Redis (HIT/MISS)

@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.zengcode.redisx</groupId>
         <artifactId>redisx-parent</artifactId>
-        <version>0.1.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>redisx-annotations</artifactId>
 

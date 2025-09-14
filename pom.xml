@@ -4,8 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zengcode.redisx</groupId>
     <artifactId>redisx-parent</artifactId>
-    <version>0.1.0</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
+
+    <properties>
+        <!-- CI-friendly version -->
+        <revision>0.1.0</revision>
+        <spring.boot.version>3.3.2</spring.boot.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
 
     <modules>
         <module>redisx-annotations</module>
@@ -13,11 +21,6 @@
         <module>redisx-cache-starter</module>
         <module>redisx-client-demo</module>
     </modules>
-
-    <properties>
-        <java.version>21</java.version>
-        <spring.boot.version>3.3.2</spring.boot.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -27,6 +30,21 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.zengcode.redisx</groupId>
+                <artifactId>redisx-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zengcode.redisx</groupId>
+                <artifactId>redisx-autoconfiguration</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zengcode.redisx</groupId>
+                <artifactId>redisx-cache-starter</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

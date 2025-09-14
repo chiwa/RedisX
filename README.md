@@ -5,6 +5,82 @@ RedisX คือ Spring Boot Starter ที่ออกแบบมาให้ 
 
 ---
 
+## Why RedisX (เมื่อมี Spring Cache อยู่แล้ว)
+
+หลายคนอาจสงสัยว่า: *“Spring เองก็มี **`@Cacheable`** อยู่แล้ว ทำไมต้องมี RedisX?”*
+คำตอบคือ **Spring Cache ถูกออกแบบมาแบบ generic** (ใช้กับ backend ได้หลายชนิด) ในขณะที่ RedisX โฟกัสที่ Redis 100% และปรับให้เหมาะกับ production จริง
+
+### 1. Spring Cache = Abstraction กว้าง
+
+* รองรับหลาย backend (Ehcache, Caffeine, Redis ฆลฎ)
+* ออกแบบมาให้ generic มาก → ดีเวลาอยากสลับ backend
+* แต่เวลาใช้ Redis จริง มักรู้สึกว่า “ยังไม่สุด” เช่น
+
+    * TTL ต่อ key ไม่ flexible เท่าที่ควร
+    * การ evict ทั้ง group ทำยาก
+    * ไม่มี logging HIT/MISS ให้ดู performance
+
+### 2. RedisX = Redis-First + Opinionated
+
+* โฟกัส Redis อย่างเดียว → optimize ได้ลึกกว่า
+* Features ที่ Spring Cache ไม่มี:
+
+    * TTL ต่อ key ชัดเจน
+    * Evict ทั้งกลุ่ม (`@CacheEvictX(allEntries=true)`) ด้วย SCAN (ปลอดภัยกว่า KEYS)
+    * Hash/Map cache (`@MapCachePut` / `@MapCacheGet`)
+    * Logging HIT / MISS / SET พร้อมขนาด payload
+    * SpEL condition/unless ที่ integrate ลึกกับ result object
+
+### 3. Dev UX ที่ดีกว่า
+
+* Annotation-first design → dev โฟกัสแค่ business logic
+* ไม่ต้อง config เยอะ → ได้ behavior ที่ production-ready ตั้งแรก
+* Logging ที่เข้าใจง่าย → debug cache behavior ได้จาก log โดยตรง
+
+---
+
+## RedisX + RedissonLock
+
+นอกจาก cache แล้ว ระบปริงเจอาปัญหา **race condition** หรือ **update ซ้อนกัน** อยู่บ่่อย ๆ เช่น
+
+* User หลายคนยิง request อัปเดต order พร้อมกัน
+* Service หลาย instance ดึงข้อมูลเดียวกันพร้อมกัน → ทำให้เกิด *cache stampede*
+* Job ที่รันทุก ๆ 5 นาที แต่มีหลาย instance → รันชนกันซ้ำ
+
+### Spring เองไม่มี Lock API
+
+* Dev ต้องไปใช้ Redisson เอง → ต้องเขี่ยน boilerplate `lock()/unlock()` เยอะ
+* เส่งลืม unlock หรือเขี่ยน try/finally พลาด
+
+### RedisX มาพร้อม `@RedissonLockX`
+
+* ใช้ annotation ครอบ method ได้เลย
+* Lock จะถูก acquire ก่อน execute method
+* ปลอดภัย: auto-unlock หลังเมธอดเสร็จ หรือถ้า timeout
+
+**ตัวอย่างการใช้งาน**
+
+```java
+@Service
+class PaymentService {
+
+  // ป้องกันไม่ให้มีการจ่ายเงิน order เดียวกันพร้อมกัน
+  @RedissonLockX(key = "'order:' + #orderId", waitTime = 5, leaseTime = 30)
+  public void pay(String orderId) {
+    // โค้ดนี้ถูก lock แบบ distributed แล้ว
+    processPayment(orderId);
+  }
+}
+```
+
+### Parameters ของ `@RedissonLockX`
+
+* `key` – SpEL สำหรับระบุชื่อ lock (ควร unique ต่อ resource)
+* `waitTime` – เวลาที่จะรอ lock (วินาที) ก่อน timeout
+* `leaseTime` – อายุ lock (วินาที) ป้องกัน dev ลืม unlock
+
+---
+
 ## Redis Features & Use Cases
 
 ### 1. Cache
