@@ -31,12 +31,6 @@ RedisX คือ Spring Boot Starter ที่ออกแบบมาให้ 
     * Logging HIT / MISS / SET พร้อมขนาด payload
     * SpEL condition/unless ที่ integrate ลึกกับ result object
 
-### 3. Dev UX ที่ดีกว่า
-
-* Annotation-first design → dev โฟกัสแค่ business logic
-* ไม่ต้อง config เยอะ → ได้ behavior ที่ production-ready ตั้งแรก
-* Logging ที่เข้าใจง่าย → debug cache behavior ได้จาก log โดยตรง
-
 ---
 
 ## RedisX + RedissonLock
@@ -79,6 +73,54 @@ class PaymentService {
 * `waitTime` – เวลาที่จะรอ lock (วินาที) ก่อน timeout
 * `leaseTime` – อายุ lock (วินาที) ป้องกัน dev ลืม unlock
 
+---
+
+---
+
+## ใช้ผ่าน JitPack
+
+ถ้าคุณต้องการใช้ RedisX โดยไม่ต้อง deploy ขึ้น Maven Central หรือมีการบิลด์รุ่นใหม่บ่อย ๆ สามารถใช้ JitPack ได้:
+
+**Gradle (Kotlin DSL)**
+
+```kotlin
+dependencies {
+  implementation("com.github.chiwa:RedisX:0.1.0")
+}
+
+repositories {
+  maven { url = uri("https://jitpack.io") }
+}
+```
+
+**Gradle (Groovy DSL)**
+
+```groovy
+dependencies {
+  implementation 'com.github.chiwa:RedisX:0.1.0'
+}
+
+repositories {
+  maven { url 'https://jitpack.io' }
+}
+```
+
+**Maven**
+
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.github.chiwa</groupId>
+  <artifactId>RedisX</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
 ---
 
 ## Redis Features & Use Cases
