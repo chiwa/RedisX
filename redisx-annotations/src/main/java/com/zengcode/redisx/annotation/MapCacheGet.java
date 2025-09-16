@@ -4,8 +4,7 @@ import java.lang.annotation.*;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Documented
 public @interface MapCacheGet {
-    String name();
-    String key();
+    String cacheName();
+    String key();        // Expression สำหรับ field
 }

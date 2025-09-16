@@ -20,6 +20,9 @@ public class CacheProps {
     /** TTL (วินาที) สำหรับค่า null */
     private long nullTtlSeconds = 30;
 
+    /** จำนวน entry ต่อรอบของ SCAN (ใช้ตอน evict-all) */
+    private int scanCount = 1000;
+
     public String getPrefix() {
         return prefix;
     }
@@ -58,5 +61,13 @@ public class CacheProps {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public int getScanCount() {
+        return scanCount;
+    }
+
+    public void setScanCount(int scanCount) {
+        this.scanCount = scanCount;
     }
 }
