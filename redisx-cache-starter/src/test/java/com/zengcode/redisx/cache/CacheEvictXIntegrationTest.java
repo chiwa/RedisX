@@ -1,7 +1,7 @@
 package com.zengcode.redisx.cache;
 
-import com.zengcode.redisx.annotation.CacheableX;
-import com.zengcode.redisx.annotation.CacheEvictX;
+import com.zengcode.redisx.annotation.cache.CacheableX;
+import com.zengcode.redisx.annotation.cache.CacheEvictX;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

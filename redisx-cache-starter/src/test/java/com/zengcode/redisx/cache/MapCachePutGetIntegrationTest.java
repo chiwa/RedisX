@@ -1,8 +1,8 @@
 package com.zengcode.redisx.cache;
 
-import com.zengcode.redisx.annotation.MapCacheEvict;
-import com.zengcode.redisx.annotation.MapCacheGet;
-import com.zengcode.redisx.annotation.MapCachePut;
+import com.zengcode.redisx.annotation.cache.MapCacheEvict;
+import com.zengcode.redisx.annotation.cache.MapCacheGet;
+import com.zengcode.redisx.annotation.cache.MapCachePut;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

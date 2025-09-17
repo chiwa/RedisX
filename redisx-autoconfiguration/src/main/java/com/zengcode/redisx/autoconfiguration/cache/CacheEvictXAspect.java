@@ -1,6 +1,6 @@
 package com.zengcode.redisx.autoconfiguration.cache;
 
-import com.zengcode.redisx.annotation.CacheEvictX;
+import com.zengcode.redisx.annotation.cache.CacheEvictX;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

@@ -1,1 +1,2 @@
 com.zengcode.redisx.autoconfiguration.cache.RedisXCacheStarterAutoConfiguration
+com.zengcode.redisx.autoconfiguration.pubsub.RedisXPubSubStarterAutoConfiguration

@@ -1,4 +1,4 @@
-package com.zengcode.redisx.annotation;
+package com.zengcode.redisx.annotation.cache;
 
 import java.lang.annotation.*;
 

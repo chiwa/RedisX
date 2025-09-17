@@ -1,6 +1,6 @@
 package com.zengcode.redisx;
 
-import com.zengcode.redisx.annotation.CacheableX;
+import com.zengcode.redisx.annotation.cache.CacheableX;
 import org.springframework.stereotype.Service;
 
 @Service

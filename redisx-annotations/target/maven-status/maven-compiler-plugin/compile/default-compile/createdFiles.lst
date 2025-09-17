@@ -1,5 +1,8 @@
-com/zengcode/redisx/annotation/CacheableX.class
-com/zengcode/redisx/annotation/MapCacheGet.class
-com/zengcode/redisx/annotation/CacheEvictX.class
+com/zengcode/redisx/annotation/cache/CacheableX.class
+com/zengcode/redisx/annotation/pubsub/PublishX.class
+com/zengcode/redisx/annotation/cache/MapCacheEvict.class
+com/zengcode/redisx/annotation/cache/MapCacheGet.class
+com/zengcode/redisx/annotation/cache/CacheEvictX.class
 Unknown/Main.class
-com/zengcode/redisx/annotation/MapCachePut.class
+com/zengcode/redisx/annotation/pubsub/SubscribeX.class
+com/zengcode/redisx/annotation/cache/MapCachePut.class

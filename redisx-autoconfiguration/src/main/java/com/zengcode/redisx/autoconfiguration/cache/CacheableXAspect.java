@@ -2,7 +2,7 @@ package com.zengcode.redisx.autoconfiguration.cache;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zengcode.redisx.annotation.CacheableX;
+import com.zengcode.redisx.annotation.cache.CacheableX;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

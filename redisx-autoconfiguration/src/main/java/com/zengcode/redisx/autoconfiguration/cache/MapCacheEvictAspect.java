@@ -1,6 +1,6 @@
 package com.zengcode.redisx.autoconfiguration.cache;
 
-import com.zengcode.redisx.annotation.MapCacheEvict;
+import com.zengcode.redisx.annotation.cache.MapCacheEvict;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

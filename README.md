@@ -283,7 +283,7 @@ public class PaymentService {
 ## Releases 
 
 - [Cache Starter](docs/v_0_1_0/v0.1.0-cache.md)
-- [Pub/Sub Starter](docs/v_0_2_0/v0.2.0-pubsub.md) [Future]
+- [Pub/Sub Starter](docs/v_0_2_0/pubsub.md)
 - [Streams Starter](docs/v_0_3_0/v0.3.0-streams.md) [Future]
 - [Distributed Lock Starter](docs/v_0_4_0/v0.4.0-lock.md) [Future]
 - [Rate Limiter Starter](docs/v_0_5_0/v0.5.0-ratelimit.md) [Future]
