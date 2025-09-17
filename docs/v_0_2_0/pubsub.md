@@ -1,11 +1,11 @@
-# RedisX – Release v0.2.0 🚀
+# RedisX – Release v0.2.0 
 
 
 Release นี้เพิ่มความสามารถ Pub/Sub แบบ annotation-first, ระบบรีทรายทั้งฝั่ง publish/subscribe, และปรับปรุงความเสถียรของการ deserialize payload พร้อมตัวอย่างทดสอบแบบ end-to-end ด้วย Testcontainers
 
 ---
 
-## ✨ New Features
+##  New Features
 
 * **Pub/Sub Annotation Support**
 
@@ -41,28 +41,7 @@ Release นี้เพิ่มความสามารถ Pub/Sub แบบ
 
 ---
 
-## 🐞 Fixes
-
-* แก้ `IllegalAccessException` ตอนเรียกใช้ subscriber methods ภายใน class/inner class โดยบังคับ `setAccessible(true)` ภายใน registrar
-* Integration tests ครอบคลุม:
-
-    * ✅ Publish → Subscribe OK (deserialize DTO)
-    * 🔄 Handler retry (ล้ม 2 ครั้งแรกสำเร็จครั้งที่ 3)
-    * 🎯 Event filter (mismatch → ไม่เรียก handler)
-
----
-
-## ⚠️ Breaking Changes
-
-* ปรับชื่อ auto-configuration ให้สอดคล้อง:
-
-    * `RedisXCacheStarterAutoConfiguration`
-    * `RedisXPubSubStarterAutoConfiguration`
-* `@SubscribeX` **ไม่รองรับ** method ที่มีพารามิเตอร์มากกว่า 1 (จะโยน exception ที่สตาร์ทอัป)
-
----
-
-## 📦 Configuration Reference (`application.yml`)
+##  Configuration Reference (`application.yml`)
 
 ```yaml
 redisx:
@@ -80,7 +59,7 @@ redisx:
     log-payload: true
 ```
 
-### 🔧 Explanation of Pub/Sub Config
+### Explanation of Pub/Sub Config
 
 * **enabled** → เปิด/ปิดระบบ Pub/Sub (true = เปิดใช้งาน)
 * **publish-max-attempts** → จำนวนครั้งสูงสุดที่ retry เมื่อ publish ล้มเหลว
